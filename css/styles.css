@@ -1,0 +1,497 @@
+/* Main stylesheet for index of jakepodell.com */
+
+body{
+    margin: -25px 0 0;
+}
+
+/* ---------  HEADER ---------- */
+
+#header .background{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#header{
+    margin-bottom: -10px;
+    overflow: hidden;
+}
+
+#header_container{
+    position: absolute;
+    top: 0;
+    width:50%;
+    left: 25%;
+}
+
+#header_text{
+    color: white;
+    font-size: 24px;
+    font-family: Helvetica, sans-serif;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+.header_text_low{
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+.header_text_raised{
+    transform: translateY(175px);
+    opacity: 1;
+}
+
+#header_text #text{
+    padding: 30px 0 10px 0;
+    text-align: center;
+}
+
+#header_text #text p{
+    font-size: 24px;
+    margin:5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#header_text #text h1 {
+    font-size: 3em;
+    margin: 0;
+    font-family: 'Alegreya Sans', sans-serif;
+    /*text-shadow: 2px 2px 2px black;*/
+}
+
+#header_svg{
+    position: absolute;
+    width: 110%;
+}
+
+.button{
+    text-decoration: none;
+    padding: 10px;
+    width: 200px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: 0.5s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.button:hover{
+    background-color: rgba(255,255,255,.75);
+    color: black;
+}
+
+#header_button_container{
+    margin-top: 50px;
+    text-align: center;
+    padding: 25px;
+    transition: 1s;
+    -webkit-transition: 1s;
+}
+
+.nav_bar{
+    transform: translateY(75px);
+    color: white;
+    font-size: 24px;
+    font-family: Helvetica, sans-serif;
+    -webkit-transition: 1s;
+    transition: 1s;
+    text-align: center;
+}
+
+.nav_bar .button{
+    width: auto;
+    margin: auto 1.8%;
+    border: none;
+    font-size: 16px;
+    vertical-align: top;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    opacity: 0.7;
+}
+
+.nav_bar .button:hover{
+    background-color: transparent;
+    color: white;
+    opacity: 1;
+    /*margin: auto 20px;*/
+}
+
+#mobile_nav_button{
+    cursor: pointer;
+}
+
+.mobile{
+    display: none;
+}
+
+#mobile_nav_bar{
+    position: absolute;
+    transform: translate3D(0,0,0);
+    right: 0;
+    top:0;
+    background-color: #26262A;
+    /*height: 100vh;*/
+    z-index: 10;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition-timing-function: ease;
+    box-shadow: 0 0 50px black;
+    overflow: hidden;
+}
+
+#mobile_nav_bar.visible{
+    width: 100%;
+    opacity: 1;
+    max-height: 900px;
+}
+
+#mobile_nav_bar.hidden{
+    width: 100%;
+    /*opacity: 0.5;*/
+    max-height: 0;
+}
+
+#mobile_nav_bar .mobile_button{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    font-size: 3em;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    border-bottom: 1px solid lightgray;
+    padding:60px 10px 60px 0;
+    text-transform: uppercase;
+}
+/* ---------------  ABOUT SECTION ------------ */
+
+#about{
+    background-color: #e7e7e7;
+    text-align: center;
+    overflow: hidden;
+}
+
+#about_text{
+    display: inline-block;
+    width: 75%;
+    padding: 50px;
+}
+
+#about_text h3{
+    font-size: 3em;
+    font-family: 'Tangerine', cursive;
+    margin: 0 auto 30px;
+}
+
+#about_text p{
+    font-size: 1.15em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+#about .header_hr{
+    margin: 50px 0;
+    width: 100%;
+}
+
+#headshot{
+    /*display: inline-block;*/
+    transform: translateY(75px);
+    display: none;
+}
+
+#headshot img{
+    width: 400px;
+}
+
+/* ---------------  WORK SECTION ------------ */
+
+#work{
+    padding: 100px 0;
+    text-align: center;
+}
+
+#work_heading{
+    font-size: 4em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+#work_container{
+    width: 85%;
+    display: inline-block;
+}
+
+#work hr{
+    width: 42%;
+    margin-top: 10px;
+    opacity: 0.25;
+}
+#work .work_item hr{
+    width: 0;
+    opacity: 0.0;
+    transform: translateY(100px);
+    transition: 1s;
+    -webkit-transition: 1s;
+    margin: 50px auto;
+}
+
+.work_image{
+    transition: 0.5s;
+    -webskit-transition: 0.5s;
+    transition-timing-function: ease-out;
+    opacity: 0;
+    width: 450px;
+    margin: auto 30px;
+}
+
+.slide_from_left{
+    float: left;
+    transform: translateX(-25px);
+}
+
+.slide_from_right{
+    float: right;
+    transform: translateX(25px);
+}
+
+
+.work_item{
+    display: inline-block;
+    margin: 100px 10px;
+}
+
+.work_description{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    transform: translateY(15px);
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    transition-delay: 0.25s;
+    -webkit-transition-delay: 0.25s;
+    width: 510px;
+    display: inline-block;
+    box-shadow: 0 0 50px 0 rgba(0,0,0,0.1);
+    padding: 25px 50px 50px;
+    text-align: left;
+    margin: auto 30px;
+}
+
+.work_description h1,h2,h3,h4,h5{
+    font-weight: 300;
+}
+
+.work_description a{
+    text-decoration: none;
+    color: cornflowerblue;
+    margin-bottom: 0;
+}
+
+.work_description a:hover{
+    color: rgba(100, 149, 237, 0.65);
+
+}
+
+.work_description p{
+    font-size: 16px;
+}
+
+
+/* ---------------  CONTACT SECTION ------------ */
+
+#contact{
+    background-color: #26262A;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+#contact #reach_out{
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#contact #reach_out a{
+    display: inline-block;
+    margin: auto 20px;
+    font-size: 18px;
+}
+
+#contact #reach_out h1{
+    font-size: 1.5em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+}
+
+#contact .nav_bar{
+    position: relative;
+    transform: none;
+    height: auto;
+    width: 60%;
+    display: inline-block;
+}
+
+#contact .nav_bar a{
+    transition: 0.25s;
+    -webkit-transition: 0.25s;
+    opacity: 0.7;
+}
+
+#contact .nav_bar a:hover{
+    transform: none;
+    opacity: 1;
+}
+
+
+/* ============================== Smaller desktop screens ====================== */
+
+@media screen and (max-width: 1400px) {
+    #nav_bar{
+        transform: translateY(50px);
+    }
+
+    .header_text_low{
+        transform: translateY(175px);
+    }
+
+    .header_text_raised{
+        transform: translateY(150px);
+    }
+
+    .work_description{
+        width: 35%;
+    }
+
+    .work_image{
+        width: 38%;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    #header_text #text{
+        padding: 0;
+    }
+
+    #header_text.header_text_raised{
+        transform: translateY(115px);
+    }
+
+    #header_button_container{
+        margin-top: 15px;
+    }
+
+}
+
+@media screen and (max-device-width: 1024px){
+
+    .work_description h1{
+        font-size: 1.75em;
+    }
+
+}
+
+/* ============================== Smartphones ====================== */
+@media screen and (max-device-width: 770px) {
+
+    #header .background {
+        max-width: 255%;
+    }
+
+    #header_container .nav_bar{
+        display: none;
+    }
+
+    #header_container{
+        width: 80%;
+        left: 10%;
+        top: 10%;
+    }
+
+    #header_text #text h1{
+        font-size: 6em;
+        margin: 20px auto;
+    }
+
+    #header_text #text p{
+        font-size: 2em;
+    }
+
+    .button{
+        padding: 30px 60px;
+        font-size: 2em;
+        width:auto;
+    }
+
+    #mobile_nav_button {
+        display: block;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        z-index: 1;
+        /*background-color: white;*/
+        right: 20px;
+        top: 20px;
+        background-image: url("../res/img/mobile_burger_small_white.png");
+        background-size: contain;
+    }
+
+    #about_text h3{
+        font-size: 5em;
+    }
+
+    #about_text p{
+        font-size: 2em;
+    }
+
+    .work_description h1{
+        font-size: 3em;
+    }
+
+    .work_description h3{
+        font-size: 1.5em;
+    }
+
+    .work_description h5{
+        font-size: 1.13em;
+    }
+
+    .work_description p{
+        font-size: 1.25em;
+    }
+
+    .work_item .work_description{
+        margin: auto;
+        width: 90%;
+    }
+
+    .work_item .work_image{
+        float: none;
+        width: 90%;
+        margin-bottom: 50px;
+    }
+
+    #contact #reach_out a{
+        font-size: 2em;
+        padding: 30px 80px;
+    }
+
+    #contact .nav_bar{
+        display: none;
+    }
+
+    #contact #reach_out h1{
+        font-size: 2.25em;
+    }
+
+}
