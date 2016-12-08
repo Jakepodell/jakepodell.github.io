@@ -9,6 +9,7 @@ body{
 #header .background{
     max-width: 100%;
     max-height: 100%;
+    min-height: 500px;
 }
 
 #header{
@@ -95,8 +96,6 @@ body{
     color: white;
     font-size: 24px;
     font-family: Helvetica, sans-serif;
-    -webkit-transition: 1s;
-    transition: 1s;
     text-align: center;
 }
 
@@ -134,9 +133,6 @@ body{
     background-color: #26262A;
     /*height: 100vh;*/
     z-index: 10;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition-timing-function: ease;
     box-shadow: 0 0 50px black;
     overflow: hidden;
 }
@@ -401,6 +397,64 @@ body{
 
 }
 
+@media screen and (max-width: 1000px) {
+    .work_description {
+        width: 38%;
+        margin: auto 10px;
+    }
+
+    .work_image {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    #header .background {
+        max-width: 150%;
+    }
+
+    #header_container .nav_bar{
+        transform: none;
+    }
+
+    #header_container{
+        width: 80%;
+        left: 10%;
+        top: 10%;
+    }
+
+
+    .work_description h1{
+        font-size: 2em;
+    }
+
+    .work_description h3{
+        font-size: 1.25em;
+    }
+
+    .work_description h5{
+        font-size: 1em;
+    }
+
+    .work_description p{
+        font-size: 1.15em;
+    }
+
+    .work_item .work_description{
+        margin: auto;
+        width: 90%;
+    }
+
+    .work_item .work_image{
+        float: none;
+        width: 70%;
+        margin-bottom: 50px;
+    }
+
+
+}
+
 /* ============================== Smartphones ====================== */
 @media screen and (max-device-width: 770px) {
 
@@ -494,4 +548,10 @@ body{
         font-size: 2.25em;
     }
 
+}
+
+@media screen and (max-width: 625px) {
+    #header_button.button {
+        display: none;
+    }
 }
