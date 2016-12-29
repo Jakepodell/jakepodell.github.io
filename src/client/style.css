@@ -1,0 +1,67 @@
+#banner_image {
+    width: 100%;
+    display: block;
+    height: 650px;
+    overflow: hidden;
+}
+
+#banner_image #inner_logo {
+    display: block;
+    width:50%;
+    position: absolute;
+    top: 250px;
+    width: 60%;
+    margin-left: 20%;
+}
+
+#banner_image #inner_logo img {
+    width: 100%;
+}
+
+#input-container #input {
+    list-style-type: none;
+    padding: 5px;
+    margin: 10px auto;
+    color: #4b4b4b;
+}
+
+#input-container select {
+    color: black;
+}
+
+#input-container input {
+    color: black;
+}
+
+#input-container {
+    display: block;
+    margin: 100px auto;
+    width:90%;
+    padding:20px;
+}
+
+label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+    border:2px solid #f00;
+}
+
+#radio-container img {
+    width: 100px;
+    height: 100px;
+    margin: 25px;
+}
+
+#radio-container {
+    text-align: center;
+}
+
+#form_title {
+    font-size: 3em;
+}
