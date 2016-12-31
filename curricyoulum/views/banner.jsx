@@ -12,9 +12,9 @@ class Banner extends React.Component {
     render() {
         return(
             <div id = "banner_image">
-                <img src="img/cornell_background_offset.jpg" />
+                <img src="img/cornell_background_offset_cropped.jpg" />
                 <div id = "inner_logo">
-                    <img src="img/cur_logo.png" />
+                    <img src="img/final_logo.png" />
                 </div>
             </div>
         );

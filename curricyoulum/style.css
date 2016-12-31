@@ -1,44 +1,48 @@
+/*================================== BANNER ===================================*/
+
 #banner_image {
-    width: 100%;
-    display: block;
-    height: 650px;
+    height: 600px;
     overflow: hidden;
+}
+
+#banner_image img {
+    width: 100%;
 }
 
 #banner_image #inner_logo {
     display: block;
-    width:50%;
     position: absolute;
-    top: 250px;
-    width: 60%;
-    margin-left: 20%;
+    top: 160px;
+    width: 70%;
+    margin-left: 15%;
 }
 
 #banner_image #inner_logo img {
     width: 100%;
 }
 
-#input-container #input {
-    list-style-type: none;
-    padding: 5px;
-    margin: 10px auto;
-    color: #4b4b4b;
-}
+/*==================================== FORM ====================================*/
 
-#input-container select {
+#form-container select {
     color: black;
 }
 
-#input-container input {
+#form-container input {
     color: black;
 }
 
-#input-container {
+#form-container {
     display: block;
     margin: 100px auto;
     width:90%;
     padding:20px;
 }
+
+#form_title {
+    font-size: 3em;
+}
+
+/*--------------- SCHOOL RADIO BUTTONS ------------------*/
 
 label > input{ /* HIDE RADIO */
     visibility: hidden; /* Makes input not-clickable */
@@ -62,14 +66,131 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     text-align: center;
 }
 
-#form_title {
-    font-size: 3em;
+/*--------------------- INPUTS --------------------------*/
+
+#form-container #input-component {
+    list-style-type: none;
+    padding: 5px;
+    margin: 10px auto;
+    color: #4b4b4b;
+    display: inline-block;
 }
 
+#form-container #input-component {
+    text-align: left;
+}
+
+.internal-bubbles, .internal-bubbles #input-component {
+    display: inline-block;
+}
+
+.internal-bubbles {
+    width: 50%;
+}
+
+.internal-bubbles.right-align {
+    text-align: right;
+}
+
+
+
+.external-bubbles {
+    overflow: auto;
+}
+
+.external-bubbles #input-component {
+    width: 20%;
+}
+
+#input-container input {
+    outline: none;
+}
+.internal-bubbles #input-label {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7px;
+}
+
+#input-container {
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    border-color: #565656;
+    width: 325px;
+    height: 35px;
+}
+
+.right-align #input-container {
+    width: 420px;
+}
+
+.external-bubbles #input-container {
+    width: 225px;
+    float: left;
+    margin-right: 50px;
+}
+
+#input-container input {
+    border-style: none;
+    height: 100%;
+    width: 100%;
+}
+
+#input-sizer {
+    width: auto;
+    height: 90%;
+    overflow: hidden;
+}
+
+/*---------------------- BUBBLES ------------------------*/
+
+#bubble {
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 2px 6px;
+    margin: 5px 3px;
+    font-size: 12px;
+    background-color: #eee;
+    float: left;
+}
+
+#bubble-delete {
+    width: 12px;
+    margin: 0 3px 1px 1px;
+    background-color: #ddd;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 0;
+}
+
+#bubble-delete:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#external-bubble-container {
+    width: 75%;
+    height: 200px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #565656;
+    float: right;
+    margin-top: 35px;
+}
+
+/*------------------ INPUT SUGGESTIONS ------------------*/
 #suggestions {
     width: 300px;
     border-style: solid;
     border-width: 0 1px 1px 1px;
+    margin-left: 100px;
+}
+
+.external-bubbles #suggestions {
+    margin-left: 0;
 }
 
 #suggestions #suggestion {
@@ -77,9 +198,14 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     border-width: 1px 0 0 0;
 }
 
-#suggestions #suggestion:hover {
+#suggestions #suggestion.focused {
     background-color: #565656;
     color: #fff;
+}
+
+#suggestions #suggestion.unfocused {
+    background-color: #ffffff;
+    color: #000;
 }
 
 #suggestions #suggestion td {

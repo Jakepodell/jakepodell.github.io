@@ -18,7 +18,6 @@ const FormActions = {
         });
         WebApiUtils.submit("engineering", "computer science");
     },
-
 };
 
 export default FormActions;

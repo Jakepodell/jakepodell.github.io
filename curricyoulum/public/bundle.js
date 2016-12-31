@@ -22100,6 +22100,10 @@
 	
 	var _radioImage2 = _interopRequireDefault(_radioImage);
 	
+	var _constants = __webpack_require__(/*! ../constants/constants.jsx */ 202);
+	
+	var _constants2 = _interopRequireDefault(_constants);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22121,65 +22125,42 @@
 	    }
 	
 	    _createClass(Form, [{
+	        key: 'renderSchools',
+	        value: function renderSchools() {
+	            var _this2 = this;
+	
+	            return _constants2.default.schools.map(function (school) {
+	                return _react2.default.createElement(_radioImage2.default, { key: school.title, img: school.img, title: school.title, name: 'schools', onSelectSchool: _this2.props.onSelectSchool });
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var schools = [{ title: "Engineering", img: "http://www.kiawahisland.org/Data/Sites/1/media/biweekly-email-/007-512.png" }, { title: "Arts", img: "http://squad.se/wp-content/uploads/2016/08/Hard-Money-Icon-3.png" }, { title: "Human Ecology", img: "http://www.morethanprinting.co/images/educationIcon.png" }, { title: "Hotel", img: "http://www.hotel-r.net/im/hotel/gb/icon-hotel-18.png" }, { title: "CALS", img: "http://www.cals.nl/wp-content/themes/calscollegelocatie/assets/img/logo.svg" }];
-	
-	            var majors = ["Computer Science", "Hotel Things", "Economics", "Accounting", "Applied and Engineering Physics", "Art History", "Basket Weaving"];
-	            var minors = majors;
-	            var classesTaken = ["AEM 2540", "CS 4780", "ECE 3210", "MATH 2930"];
-	            var graduatingSemester = ["Spring 2017", "Fall 2017", "Spring 2018", "Fall 2018", "Spring 2019"];
-	            var desiredClasses = classesTaken;
-	
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                'form',
+	                { autoComplete: 'off' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { id: 'input-container' },
+	                    { id: 'form-container' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: 'input' },
+	                        { id: 'radio-container' },
 	                        _react2.default.createElement(
-	                            'div',
-	                            { id: 'radio-container' },
-	                            _react2.default.createElement(
-	                                'p',
-	                                { id: 'form_title' },
-	                                'School:'
-	                            ),
-	                            _react2.default.createElement(_radioImage2.default, { img: schools[0].img, title: schools[0].title, name: 'schools', onSelectSchool: this.props.onSelectSchool }),
-	                            _react2.default.createElement(_radioImage2.default, { img: schools[1].img, title: schools[1].title, name: 'schools', onSelectSchool: this.props.onSelectSchool }),
-	                            _react2.default.createElement(_radioImage2.default, { img: schools[2].img, title: schools[2].title, name: 'schools', onSelectSchool: this.props.onSelectSchool }),
-	                            _react2.default.createElement(_radioImage2.default, { img: schools[3].img, title: schools[3].title, name: 'schools', onSelectSchool: this.props.onSelectSchool }),
-	                            _react2.default.createElement(_radioImage2.default, { img: schools[4].img, title: schools[4].title, name: 'schools', onSelectSchool: this.props.onSelectSchool })
-	                        )
+	                            'p',
+	                            { id: 'form_title' },
+	                            'School:'
+	                        ),
+	                        this.renderSchools()
 	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'input' },
-	                        _react2.default.createElement(_input2.default, { field: 'Major', example: 'Computer Science', items: majors })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'input' },
-	                        _react2.default.createElement(_input2.default, { field: 'Minor(s)', example: 'Cognitive Science', items: minors })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'input' },
-	                        _react2.default.createElement(_input2.default, { field: 'Classes Taken', example: 'AEM 2940', items: classesTaken })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'input' },
-	                        _react2.default.createElement(_input2.default, { field: 'Graduating Semester', example: 'Spring 2019', items: graduatingSemester })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { id: 'input' },
-	                        _react2.default.createElement(_input2.default, { field: 'Desired Classes', example: 'CS 4700', items: desiredClasses })
-	                    )
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(_input2.default, { field: 'Major:', example: 'Computer Science', suggestions: _constants2.default.majors, internalBubbles: true }),
+	                    _react2.default.createElement(_input2.default, { field: 'Minor(s):', example: 'Cognitive Science', suggestions: _constants2.default.minors, internalBubbles: true, align: 'right' }),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(_input2.default, { field: 'Classes Taken:', example: 'AEM 2940', suggestions: _constants2.default.classesTaken }),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(_input2.default, { field: 'Graduating Semester:', example: 'Spring 2019', suggestions: _constants2.default.graduatingSemester }),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(_input2.default, { field: 'Desired Classes:', example: 'CS 4700', suggestions: _constants2.default.classesDesired })
 	                )
 	            );
 	        }
@@ -22223,6 +22204,10 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 182);
 	
+	var _constants = __webpack_require__(/*! ../constants/constants.jsx */ 202);
+	
+	var _constants2 = _interopRequireDefault(_constants);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22236,6 +22221,10 @@
 	/**
 	 * A single input field, derives its heading, search text, and suggestion items from the field prop.
 	 * Includes a dropdown of selectable suggestions.
+	 * selectable suggestions are displayed as bubbles, either in the same div as the tying or an external div
+	 *  this is determined from props
+	 *  in order to get the ability to place bubble in the input, the input is actually hidden within an
+	 *  external div that is masked to look like the input.
 	 */
 	var Input = function (_React$Component) {
 	    _inherits(Input, _React$Component);
@@ -22245,12 +22234,13 @@
 	
 	        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this, props));
 	
-	        _this.state = { showsSuggestions: false, inputValue: "" };
+	        _this.state = { showsSuggestions: false, inputValue: "", selectedItems: [], highlightedIndex: -1, highlightedItemText: "", filteredSuggestions: [] };
 	        _this.handleInputTextChange = _this.handleInputTextChange.bind(_this);
 	        _this.handleSelectSuggestion = _this.handleSelectSuggestion.bind(_this);
 	        _this.handleInputFocus = _this.handleInputFocus.bind(_this);
 	        _this.handleKeyPress = _this.handleKeyPress.bind(_this);
 	        _this.handleWindowClick = _this.handleWindowClick.bind(_this);
+	        _this.calculateHighlightedItemText = _this.calculateHighlightedItemText.bind(_this);
 	        return _this;
 	    }
 	
@@ -22275,72 +22265,173 @@
 	        key: 'handleInputTextChange',
 	        value: function handleInputTextChange(event) {
 	            this.setState({ showsSuggestions: event.target.value.length > 0,
-	                inputValue: event.target.value });
+	                inputValue: event.target.value }, this.filterSuggestions);
 	        }
 	    }, {
 	        key: 'handleSelectSuggestion',
 	        value: function handleSelectSuggestion(value) {
-	            this.setState({ inputValue: value.target.innerHTML });
-	            this.setState({ showsSuggestions: false });
+	            this.selectSuggestion(value.target.innerHTML);
+	        }
+	    }, {
+	        key: 'selectSuggestion',
+	        value: function selectSuggestion(value) {
+	            this.setState({ selectedItems: this.state.selectedItems.concat(value), highlightedIndex: -1 });
 	        }
 	    }, {
 	        key: 'handleKeyPress',
 	        value: function handleKeyPress(event) {
-	            if (event.keyCode == 27) //escape key
-	                this.setState({ showsSuggestions: false });
+	            if (!this.state.showsSuggestions) return;
+	            switch (event.keyCode) {
+	                case _constants2.default.keyCodes.ESC:
+	                    this.hideSuggestions();
+	                    break;
+	                case _constants2.default.keyCodes.UP:
+	                    if (this.state.highlightedIndex >= -1) this.setState({ highlightedIndex: this.state.highlightedIndex - 1 });
+	                    event.preventDefault();
+	                    break;
+	                case _constants2.default.keyCodes.DOWN:
+	                    if (this.state.highlightedIndex < this.state.filteredSuggestions.length - 1) this.setState({ highlightedIndex: this.state.highlightedIndex + 1 });
+	                    event.preventDefault();
+	                    break;
+	                case _constants2.default.keyCodes.ENTER:
+	                    if (this.state.highlightedItem !== "") {
+	                        this.selectSuggestion(this.state.highlightedItemText);
+	                        break;
+	                    }
+	                default:
+	                    break;
+	            }
 	        }
 	    }, {
 	        key: 'handleWindowClick',
 	        value: function handleWindowClick(event) {
-	            if (event.target.id != this.props.field) this.setState({ showsSuggestions: false });
+	            if (event.target.id != this.props.field && event.target.id !== "suggestion-td") this.hideSuggestions();
 	        }
 	    }, {
-	        key: 'renderItems',
-	        value: function renderItems() {
+	        key: 'hideSuggestions',
+	        value: function hideSuggestions() {
+	            this.setState({ showsSuggestions: false, inputValue: "", highlightedIndex: -1, highlightedItemText: "" });
+	        }
+	    }, {
+	        key: 'filterSuggestions',
+	        value: function filterSuggestions() {
 	            var inputValue = this.state.inputValue;
-	            return this.props.items.filter(function (item) {
-	                return item.toLowerCase().includes(inputValue.toLowerCase()); //see if there is a better way to do this using a regex
-	            }).map(function (item) {
+	            this.setState({ filteredSuggestions: this.props.suggestions.filter(function (item) {
+	                    return item.toLowerCase().includes(inputValue.toLowerCase());
+	                })
+	            });
+	        }
+	    }, {
+	        key: 'calculateHighlightedItemText',
+	        value: function calculateHighlightedItemText(input, item, index) {
+	            if (this.state.highlightedIndex == index && this.state.showsSuggestions && this.state.highlightedItemText !== item) {
+	                this.setState({ highlightedItemText: item });
+	            }
+	        }
+	    }, {
+	        key: 'deleteBubble',
+	        value: function deleteBubble(item) {
+	            var newItems = this.state.selectedItems;
+	            if (newItems.indexOf(item) > -1) {
+	                newItems.splice(newItems.indexOf(item), 1);
+	                this.setState({ selectedItems: newItems });
+	            }
+	        }
+	    }, {
+	        key: 'renderSuggestions',
+	        value: function renderSuggestions() {
+	            return this.state.filteredSuggestions.map(function (item, index) {
+	                var _this2 = this;
+	
 	                return _react2.default.createElement(
 	                    'tr',
-	                    { id: 'suggestion', key: item },
+	                    { id: 'suggestion', key: index, className: this.state.highlightedIndex == index ? "focused" : "unfocused",
+	                        ref: function ref(input) {
+	                            _this2.calculateHighlightedItemText(input, item, index);
+	                        } },
 	                    _react2.default.createElement(
 	                        'td',
-	                        { onClick: this.handleSelectSuggestion, key: 'fdf' },
+	                        { onClick: this.handleSelectSuggestion, onMouseMove: function onMouseMove(e) {
+	                                return _this2.setState({ highlightedIndex: index });
+	                            }, key: index, id: "suggestion-td" },
 	                        item
 	                    )
 	                );
 	            }.bind(this));
 	        }
 	    }, {
+	        key: 'renderBubbles',
+	        value: function renderBubbles() {
+	            var _this3 = this;
+	
+	            return this.state.selectedItems.map(function (item, index) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { id: 'bubble', key: index },
+	                    _react2.default.createElement('img', { src: 'https://cdn3.iconfinder.com/data/icons/meanicons-4/512/meanicons_24-512.png', id: 'bubble-delete', onClick: _this3.deleteBubble.bind(_this3, item) }),
+	                    item
+	                );
+	            });
+	        }
+	    }, {
+	        key: 'renderInternalBubbles',
+	        value: function renderInternalBubbles() {
+	            if (this.props.internalBubbles) {
+	                return this.renderBubbles();
+	            }
+	        }
+	    }, {
+	        key: 'renderExternalBubbles',
+	        value: function renderExternalBubbles() {
+	            if (!this.props.internalBubbles) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { id: 'external-bubble-container' },
+	                    this.renderBubbles()
+	                );
+	            };
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: (this.props.internalBubbles ? "internal-bubbles" : "external-bubbles") + " " + (this.props.align === "right" ? "right-align" : "") },
 	                _react2.default.createElement(
-	                    'form',
-	                    null,
-	                    this.props.field,
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('input', { tabIndex: '0',
-	                        onFocus: this.handleInputFocus,
-	                        type: 'text',
-	                        id: this.props.field,
-	                        placeholder: "e.g. " + this.props.example,
-	                        value: this.state.inputValue,
-	                        onChange: this.handleInputTextChange
-	                    })
-	                ),
-	                _react2.default.createElement(
-	                    'table',
-	                    { id: 'suggestions', className: this.state.showsSuggestions ? "visible" : "hidden" },
+	                    'div',
+	                    { id: 'input-component' },
 	                    _react2.default.createElement(
-	                        'tbody',
-	                        null,
-	                        this.renderItems()
+	                        'div',
+	                        { id: 'input-label' },
+	                        this.props.field
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { id: 'input-container' },
+	                        this.renderInternalBubbles(),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { id: 'input-sizer' },
+	                            _react2.default.createElement('input', { tabIndex: '0',
+	                                onFocus: this.handleInputFocus,
+	                                type: 'text',
+	                                id: this.props.field,
+	                                value: this.state.inputValue,
+	                                onChange: this.handleInputTextChange
+	                            })
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'table',
+	                        { id: 'suggestions', className: this.state.showsSuggestions ? "visible" : "hidden" },
+	                        _react2.default.createElement(
+	                            'tbody',
+	                            null,
+	                            this.renderSuggestions()
+	                        )
 	                    )
-	                )
+	                ),
+	                this.renderExternalBubbles()
 	            );
 	        }
 	    }]);
@@ -22467,11 +22558,11 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'banner_image' },
-	                _react2.default.createElement('img', { src: 'img/cornell_background_offset.jpg' }),
+	                _react2.default.createElement('img', { src: 'img/cornell_background_offset_cropped.jpg' }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { id: 'inner_logo' },
-	                    _react2.default.createElement('img', { src: 'img/cur_logo.png' })
+	                    _react2.default.createElement('img', { src: 'img/final_logo.png' })
 	                )
 	            );
 	        }
@@ -22618,11 +22709,11 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { id: 'banner_image' },
-	                _react2.default.createElement('img', { src: 'img/cornell_background_offset.jpg' }),
+	                _react2.default.createElement('img', { src: 'img/cornell_background_offset_cropped.jpg' }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { id: 'inner_logo' },
-	                    _react2.default.createElement('img', { src: 'img/cur_logo.png' })
+	                    _react2.default.createElement('img', { src: 'img/final_logo.png' })
 	                )
 	            );
 	        }
@@ -24709,6 +24800,30 @@
 	  return header;
 	};
 
+
+/***/ },
+/* 202 */
+/*!********************************************!*\
+  !*** ./src/client/constants/constants.jsx ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	module.exports = {
+	    schools: [{ title: "Engineering", img: "http://www.kiawahisland.org/Data/Sites/1/media/biweekly-email-/007-512.png" }, { title: "Arts", img: "http://squad.se/wp-content/uploads/2016/08/Hard-Money-Icon-3.png" }, { title: "Human Ecology", img: "http://www.morethanprinting.co/images/educationIcon.png" }, { title: "Hotel", img: "http://www.hotel-r.net/im/hotel/gb/icon-hotel-18.png" }, { title: "CALS", img: "http://www.cals.nl/wp-content/themes/calscollegelocatie/assets/img/logo.svg" }],
+	    majors: ["Computer Science", "Hotel Things", "Economics", "Accounting", "Applied and Engineering Physics", "Art History", "Basket Weaving"],
+	    minors: ["Computer Science", "Hotel Things", "Economics", "Accounting", "Applied and Engineering Physics", "Art History", "Basket Weaving"],
+	    classesTaken: ["AEM 2540", "CS 4780", "ECE 3210", "MATH 2930"],
+	    classesDesired: ["AEM 2540", "CS 4780", "ECE 3210", "MATH 2930"],
+	    graduatingSemester: ["Spring 2017", "Fall 2017", "Spring 2018", "Fall 2018", "Spring 2019"],
+	    keyCodes: {
+	        ESC: 27,
+	        UP: 38,
+	        DOWN: 40,
+	        ENTER: 13
+	    }
+	};
 
 /***/ }
 /******/ ]);
