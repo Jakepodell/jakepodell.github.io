@@ -3,7 +3,6 @@ import request from 'superagent';
 const WebApiUtils = {
 
     submit: function (school, major) {
-        console.log("dummy for submitting a web api post");
         // request.post(APIEndpoints.REGISTRATION)
         //     .send({
         //         user: {
@@ -25,6 +24,13 @@ const WebApiUtils = {
         //             }
         //         }
         //     });
+    },
+
+    getClasses: function () {
+        request.get("https://localhost:3000/classes", function(err, res){
+            if (err) throw err;
+            console.log(JSON.parse(res.text));
+        });
     }
 }
 

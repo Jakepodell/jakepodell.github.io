@@ -48,10 +48,11 @@ class Input extends React.Component {
     }
 
     selectSuggestion(value) {
-        this.setState({selectedItems: this.state.selectedItems.concat(value), highlightedIndex: -1});
+        this.setState({selectedItems: this.state.selectedItems.concat(value)});
     }
 
     handleKeyPress(event) {
+        if(event.keyCode == Constants.keyCodes.ENTER)event.preventDefault();
         if(!this.state.showsSuggestions)return;
         switch(event.keyCode) {
             case Constants.keyCodes.ESC:
@@ -68,10 +69,12 @@ class Input extends React.Component {
                 event.preventDefault();
                 break;
             case Constants.keyCodes.ENTER:
-                if(this.state.highlightedItem !== "") {
+                if(this.state.highlightedItem !== "")
                     this.selectSuggestion(this.state.highlightedItemText);
-                    break;
-                }
+                break;
+            case Constants.keyCodes.TAB:
+                this.hideSuggestions();
+                break;
             default:
                 break;
         }

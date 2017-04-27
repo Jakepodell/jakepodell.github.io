@@ -33,37 +33,65 @@
 
 #form-container {
     display: block;
-    margin: 100px auto;
-    width:90%;
-    padding:20px;
+    margin: 100px auto 50px auto;
+    width: 1200px;
+    padding: 20px;
 }
 
 #form_title {
     font-size: 3em;
 }
 
-/*--------------- SCHOOL RADIO BUTTONS ------------------*/
+#submit {
+    display: block;
+    margin: 0 0 75px 110px;
+    padding: 10px 45px;
+    font-size: 20px;
+}
+
+/*--------------- RADIO COMPONENT ------------------*/
 
 label > input{ /* HIDE RADIO */
     visibility: hidden; /* Makes input not-clickable */
     position: absolute; /* Remove input from document flow */
 }
-label > input + img{ /* IMAGE STYLES */
+label > input + #radio-clickable{ /* IMAGE STYLES */
     cursor:pointer;
-    border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-    border:2px solid #f00;
 }
 
-#radio-container img {
+#radio-container label {
+    overflow: hidden;
+}
+
+#radio-clickable {
     width: 100px;
-    height: 100px;
-    margin: 25px;
+    margin: 20px;
+}
+
+#radio-clickable img {
+    max-width: 100px;
+    max-height: 100px;
 }
 
 #radio-container {
     text-align: center;
+}
+
+.faded {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.faded p {
+    color: #4f4f4f;
+}
+
+.selected p {
+    color: #900000;
 }
 
 /*--------------------- INPUTS --------------------------*/
@@ -92,8 +120,6 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     text-align: right;
 }
 
-
-
 .external-bubbles {
     overflow: auto;
 }
@@ -106,7 +132,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     outline: none;
 }
 .internal-bubbles #input-label {
-    width: 100px;
+    width: 75px;
     display: inline-block;
     vertical-align: top;
     margin-top: 7px;
@@ -116,13 +142,13 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     border-style: solid;
     border-width: 1px;
     display: inline-block;
-    border-color: #565656;
+    border-color: #900;
     width: 325px;
     height: 35px;
 }
 
 .right-align #input-container {
-    width: 420px;
+    width: 395px;
 }
 
 .external-bubbles #input-container {
@@ -143,6 +169,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     overflow: hidden;
 }
 
+#input-label {
+    font-weight: 700;
+}
+
 /*---------------------- BUBBLES ------------------------*/
 
 #bubble {
@@ -150,6 +180,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     border-style: solid;
     border-width: 1px;
     border-radius: 8px;
+    border-color: #900000;
     padding: 2px 6px;
     margin: 5px 3px;
     font-size: 12px;
@@ -173,12 +204,15 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 #external-bubble-container {
     width: 75%;
-    height: 200px;
+    height: 100px;
     border-style: solid;
     border-width: 1px;
-    border-color: #565656;
+    border-color: #900;
     float: right;
     margin-top: 35px;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 1;
 }
 
 /*------------------ INPUT SUGGESTIONS ------------------*/
@@ -186,7 +220,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     width: 300px;
     border-style: solid;
     border-width: 0 1px 1px 1px;
-    margin-left: 100px;
+    border-color: #900000;
+    margin-left: 75px;
+    z-index: 5;
+    position: relative;
 }
 
 .external-bubbles #suggestions {
@@ -196,10 +233,11 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 #suggestions #suggestion {
     border-style: solid;
     border-width: 1px 0 0 0;
+    border-color: #900000;
 }
 
 #suggestions #suggestion.focused {
-    background-color: #565656;
+    background-color: #900;
     color: #fff;
 }
 
@@ -210,4 +248,62 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 #suggestions #suggestion td {
     padding: 10px;
+}
+
+/*---------------- SEMESTERS ---------------------------------*/
+
+#semester {
+    display: inline-block;
+    color: #fff;
+}
+/*#semesters-container #season.spring {*/
+    /*background-color: #f26c4f;*/
+/*}*/
+
+/*#semesters-container #year.spring {*/
+    /*background-color: #f69679;*/
+/*}*/
+
+#semester #year {
+    font-size: 50px;
+    padding: 7px 15px 7px 7px;
+    font-family: Avenir;
+    background-color: #9e0b0f;
+
+}
+
+#semester #season {
+    font-family: Avenir;
+    font-weight: lighter;
+    padding: 3px;
+    background-color: #790000;
+}
+
+#semesters #radio-clickable {
+    margin: 10px;
+}
+
+/*===================== SCREEN SIZE VARIATIONS ========================*/
+
+@media (max-width: 1250px) {
+    #form-container {
+        width: 1000px;
+    }
+
+    #radio-clickable {
+        margin: 10px;
+    }
+
+    #radio-clickable img {
+        max-width: 90px;
+        max-height: 90px;
+    }
+
+    #semesters-container #radio-clickable {
+        margin: 5px;
+    }
+
+    #semesters-container {
+        margin: 10px;
+    }
 }

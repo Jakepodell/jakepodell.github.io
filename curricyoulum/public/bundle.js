@@ -22096,13 +22096,17 @@
 	
 	var _input2 = _interopRequireDefault(_input);
 	
-	var _radioImage = __webpack_require__(/*! ./radio-image.jsx */ 184);
+	var _radioComponent = __webpack_require__(/*! ./radio-component.jsx */ 203);
 	
-	var _radioImage2 = _interopRequireDefault(_radioImage);
+	var _radioComponent2 = _interopRequireDefault(_radioComponent);
 	
 	var _constants = __webpack_require__(/*! ../constants/constants.jsx */ 202);
 	
 	var _constants2 = _interopRequireDefault(_constants);
+	
+	var _WebApiUtils = __webpack_require__(/*! ../utils/WebApiUtils.jsx */ 194);
+	
+	var _WebApiUtils2 = _interopRequireDefault(_WebApiUtils);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22121,24 +22125,75 @@
 	    function Form(props) {
 	        _classCallCheck(this, Form);
 	
-	        return _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
+	
+	        _this.state = { school: "", year: "" };
+	        return _this;
 	    }
 	
 	    _createClass(Form, [{
+	        key: 'onSelectSchool',
+	        value: function onSelectSchool(school) {
+	            this.setState({ school: school });
+	            this.props.onSelectSchool(school);
+	        }
+	    }, {
+	        key: 'onSelectSemester',
+	        value: function onSelectSemester(semester) {
+	            this.setState({ year: semester });
+	        }
+	    }, {
+	        key: 'onSelectSeason',
+	        value: function onSelectSeason(season) {
+	            this.props.onSelectSeason(season);
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            _WebApiUtils2.default.getClasses();
+	        }
+	    }, {
 	        key: 'renderSchools',
 	        value: function renderSchools() {
 	            var _this2 = this;
 	
 	            return _constants2.default.schools.map(function (school) {
-	                return _react2.default.createElement(_radioImage2.default, { key: school.title, img: school.img, title: school.title, name: 'schools', onSelectSchool: _this2.props.onSelectSchool });
+	                return _react2.default.createElement(_radioComponent2.default, { key: school.title, clickable: _react2.default.createElement('img', { src: school.img, onClick: _this2.onSelectSchool.bind(_this2, school.title) }), id: school.title, title: school.title, name: 'schools', selected: _this2.state.school });
 	            });
+	        }
+	    }, {
+	        key: 'renderSemesters',
+	        value: function renderSemesters() {
+	            var _this3 = this;
+	
+	            return _constants2.default.semesterYears.map(function (year) {
+	                return _react2.default.createElement(_radioComponent2.default, { key: year, clickable: _this3.renderSemester(_this3.props.season, year), id: year, title: '', name: 'semesters', selected: _this3.state.year });
+	            });
+	        }
+	    }, {
+	        key: 'renderSemester',
+	        value: function renderSemester(season, year) {
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'semester', onClick: this.onSelectSemester.bind(this, year) },
+	                _react2.default.createElement(
+	                    'div',
+	                    { id: 'season', className: season },
+	                    season.toUpperCase()
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { id: 'year', className: season },
+	                    "'" + year
+	                )
+	            );
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'form',
-	                { autoComplete: 'off' },
+	                { autoComplete: 'off', id: 'form' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { id: 'form-container' },
@@ -22158,10 +22213,28 @@
 	                    _react2.default.createElement('hr', null),
 	                    _react2.default.createElement(_input2.default, { field: 'Classes Taken:', example: 'AEM 2940', suggestions: _constants2.default.classesTaken }),
 	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement(_input2.default, { field: 'Graduating Semester:', example: 'Spring 2019', suggestions: _constants2.default.graduatingSemester }),
+	                    _react2.default.createElement(_input2.default, { field: 'Desired Classes:', example: 'CS 4700', suggestions: _constants2.default.classesDesired }),
 	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement(_input2.default, { field: 'Desired Classes:', example: 'CS 4700', suggestions: _constants2.default.classesDesired })
-	                )
+	                    _react2.default.createElement(_input2.default, { field: 'Required Classes:', example: 'CS 4700', suggestions: _constants2.default.classesDesired }),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { id: 'radio-container' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            { id: 'form_title' },
+	                            'Graduating Semester:'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { id: 'semester-chooser' },
+	                            _react2.default.createElement(_radioComponent2.default, { key: 'spring', clickable: _react2.default.createElement('img', { src: '../img/icons/spring.png', onClick: this.onSelectSeason.bind(this, "spring") }), id: 'spring', title: 'spring', name: 'seasons', selected: this.props.season }),
+	                            _react2.default.createElement(_radioComponent2.default, { key: 'fall', clickable: _react2.default.createElement('img', { src: '../img/icons/fall.png', onClick: this.onSelectSeason.bind(this, "fall") }), id: 'fall', title: 'fall', name: 'seasons', selected: this.props.season }),
+	                            this.renderSemesters()
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement('input', { id: 'submit', type: 'submit', value: 'Submit' })
 	            );
 	        }
 	    }]);
@@ -22275,11 +22348,12 @@
 	    }, {
 	        key: 'selectSuggestion',
 	        value: function selectSuggestion(value) {
-	            this.setState({ selectedItems: this.state.selectedItems.concat(value), highlightedIndex: -1 });
+	            this.setState({ selectedItems: this.state.selectedItems.concat(value) });
 	        }
 	    }, {
 	        key: 'handleKeyPress',
 	        value: function handleKeyPress(event) {
+	            if (event.keyCode == _constants2.default.keyCodes.ENTER) event.preventDefault();
 	            if (!this.state.showsSuggestions) return;
 	            switch (event.keyCode) {
 	                case _constants2.default.keyCodes.ESC:
@@ -22294,10 +22368,11 @@
 	                    event.preventDefault();
 	                    break;
 	                case _constants2.default.keyCodes.ENTER:
-	                    if (this.state.highlightedItem !== "") {
-	                        this.selectSuggestion(this.state.highlightedItemText);
-	                        break;
-	                    }
+	                    if (this.state.highlightedItem !== "") this.selectSuggestion(this.state.highlightedItemText);
+	                    break;
+	                case _constants2.default.keyCodes.TAB:
+	                    this.hideSuggestions();
+	                    break;
 	                default:
 	                    break;
 	            }
@@ -22442,75 +22517,7 @@
 	exports.default = Input;
 
 /***/ },
-/* 184 */
-/*!******************************************!*\
-  !*** ./src/client/views/radio-image.jsx ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 8);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 182);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var RadioImage = function (_React$Component) {
-	    _inherits(RadioImage, _React$Component);
-	
-	    function RadioImage(props) {
-	        _classCallCheck(this, RadioImage);
-	
-	        var _this = _possibleConstructorReturn(this, (RadioImage.__proto__ || Object.getPrototypeOf(RadioImage)).call(this, props));
-	
-	        _this.selectSchool = _this.selectSchool.bind(_this);
-	        _this.state = { schoolName: _this.props.title };
-	        return _this;
-	    }
-	
-	    _createClass(RadioImage, [{
-	        key: 'selectSchool',
-	        value: function selectSchool() {
-	            this.props.onSelectSchool(this.state.schoolName);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'label',
-	                null,
-	                _react2.default.createElement('input', { type: 'radio', name: this.props.name }),
-	                _react2.default.createElement('img', { src: this.props.img, onClick: this.selectSchool }),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    this.props.title
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return RadioImage;
-	}(_react2.default.Component);
-	
-	exports.default = RadioImage;
-
-/***/ },
+/* 184 */,
 /* 185 */,
 /* 186 */
 /*!*************************************!*\
@@ -22638,6 +22645,9 @@
 	                null,
 	                _react2.default.createElement(_Banner2.default, null),
 	                _react2.default.createElement(_form2.default, { onSelectSchool: this.state.onSelectSchool,
+	                    onSelectSeason: this.state.onSelectSeason,
+	                    school: this.state.school,
+	                    season: this.state.season,
 	                    onSubmit: this.state.onSubmit })
 	            );
 	        }
@@ -22650,8 +22660,10 @@
 	        key: 'calculateState',
 	        value: function calculateState(prevState) {
 	            return {
-	                state: _FormStore2.default.getState(),
+	                school: _FormStore2.default.getState().school,
+	                season: _FormStore2.default.getState().season,
 	                onSelectSchool: _FormActions2.default.selectSchool,
+	                onSelectSeason: _FormActions2.default.selectSeason,
 	                onSubmit: _FormActions2.default.submimtForm
 	            };
 	        }
@@ -22771,7 +22783,8 @@
 	        key: 'getInitialState',
 	        value: function getInitialState() {
 	            return {
-	                school: ""
+	                school: "",
+	                season: "spring"
 	            };
 	        }
 	    }, {
@@ -22779,10 +22792,11 @@
 	        value: function reduce(state, action) {
 	            switch (action.type) {
 	                case _FormActionTypes2.default.SELECT_SCHOOL:
-	                    state.school = action.school;
-	                    return state;
+	                    return { school: action.school, season: state.season };
 	                case _FormActionTypes2.default.SUBMIT_FORM:
 	                    return state;
+	                case _FormActionTypes2.default.SELECT_SEASON:
+	                    return { school: state.school, season: action.season };
 	                default:
 	                    return state;
 	            }
@@ -22808,7 +22822,8 @@
 	});
 	var FormActionTypes = {
 	    SUBMIT_FORM: 'SUBMIT_FORM',
-	    SELECT_SCHOOL: 'SELECT_SCHOOL'
+	    SELECT_SCHOOL: 'SELECT_SCHOOL',
+	    SELECT_SEASON: 'SEASON'
 	};
 	
 	exports.default = FormActionTypes;
@@ -22844,16 +22859,21 @@
 	    selectSchool: function selectSchool(id) {
 	        _Dispatcher2.default.dispatch({
 	            type: _FormActionTypes2.default.SELECT_SCHOOL,
-	            id: id
+	            school: id
 	        });
-	        _WebApiUtils2.default.submit("engineering", "computer science");
+	        _WebApiUtils2.default.submit(id, "computer science");
+	    },
+	    selectSeason: function selectSeason(season) {
+	        _Dispatcher2.default.dispatch({
+	            type: _FormActionTypes2.default.SELECT_SEASON,
+	            season: season
+	        });
 	    },
 	    submitForm: function submitForm(id) {
 	        _Dispatcher2.default.dispatch({
 	            type: _FormActionTypes2.default.SUBMIT_FORM,
 	            id: id
 	        });
-	        _WebApiUtils2.default.submit("engineering", "computer science");
 	    }
 	};
 	
@@ -22881,7 +22901,6 @@
 	var WebApiUtils = {
 	
 	    submit: function submit(school, major) {
-	        console.log("dummy for submitting a web api post");
 	        // request.post(APIEndpoints.REGISTRATION)
 	        //     .send({
 	        //         user: {
@@ -22903,6 +22922,13 @@
 	        //             }
 	        //         }
 	        //     });
+	    },
+	
+	    getClasses: function getClasses() {
+	        _superagent2.default.get("https://localhost:3000/classes", function (err, res) {
+	            if (err) throw err;
+	            console.log(JSON.parse(res.text));
+	        });
 	    }
 	};
 	
@@ -24811,7 +24837,7 @@
 	"use strict";
 	
 	module.exports = {
-	    schools: [{ title: "Engineering", img: "http://www.kiawahisland.org/Data/Sites/1/media/biweekly-email-/007-512.png" }, { title: "Arts", img: "http://squad.se/wp-content/uploads/2016/08/Hard-Money-Icon-3.png" }, { title: "Human Ecology", img: "http://www.morethanprinting.co/images/educationIcon.png" }, { title: "Hotel", img: "http://www.hotel-r.net/im/hotel/gb/icon-hotel-18.png" }, { title: "CALS", img: "http://www.cals.nl/wp-content/themes/calscollegelocatie/assets/img/logo.svg" }],
+	    schools: [{ title: "Engineering", img: "../img/icons/engineering.png" }, { title: "Arts", img: "../img/icons/arts.png" }, { title: "Human Ecology", img: "../img/icons/human_ecology.png" }, { title: "Hotel", img: "../img/icons/hotel.png" }, { title: "CALS", img: "../img/icons/cals.png" }, { title: "Architecture", img: "../img/icons/architecture.png" }, { title: "Business", img: "../img/icons/business.png" }, { title: "ILR", img: "../img/icons/ilr.png" }],
 	    majors: ["Computer Science", "Hotel Things", "Economics", "Accounting", "Applied and Engineering Physics", "Art History", "Basket Weaving"],
 	    minors: ["Computer Science", "Hotel Things", "Economics", "Accounting", "Applied and Engineering Physics", "Art History", "Basket Weaving"],
 	    classesTaken: ["AEM 2540", "CS 4780", "ECE 3210", "MATH 2930"],
@@ -24821,9 +24847,78 @@
 	        ESC: 27,
 	        UP: 38,
 	        DOWN: 40,
-	        ENTER: 13
-	    }
+	        ENTER: 13,
+	        TAB: 9
+	    },
+	    semesterYears: [16, 17, 18, 19]
 	};
+
+/***/ },
+/* 203 */
+/*!**********************************************!*\
+  !*** ./src/client/views/radio-component.jsx ***!
+  \**********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 8);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 182);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RadioComponent = function (_React$Component) {
+	    _inherits(RadioComponent, _React$Component);
+	
+	    function RadioComponent(props) {
+	        _classCallCheck(this, RadioComponent);
+	
+	        var _this = _possibleConstructorReturn(this, (RadioComponent.__proto__ || Object.getPrototypeOf(RadioComponent)).call(this, props));
+	
+	        _this.state = { schoolName: _this.props.title };
+	        return _this;
+	    }
+	
+	    _createClass(RadioComponent, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'label',
+	                { className: this.props.selected !== "" ? this.props.selected === this.props.id ? "selected" : "faded" : "" },
+	                _react2.default.createElement('input', { type: 'radio', name: this.props.name }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { id: 'radio-clickable' },
+	                    this.props.clickable
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    this.props.title
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return RadioComponent;
+	}(_react2.default.Component);
+	
+	exports.default = RadioComponent;
 
 /***/ }
 /******/ ]);

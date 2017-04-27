@@ -10,16 +10,18 @@ class FormStore extends ReduceStore {
     getInitialState() {
         return {
             school: "",
+            season: "spring",
         };
     }
 
     reduce(state, action) {
         switch (action.type) {
             case FormActionTypes.SELECT_SCHOOL:
-                state.school = action.school;
-                return state;
+                return {school: action.school, season: state.season};
             case FormActionTypes.SUBMIT_FORM:
                 return state;
+            case FormActionTypes.SELECT_SEASON:
+                return {school: state.school, season: action.season};
             default:
                 return state;
         }

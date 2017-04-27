@@ -6,9 +6,16 @@ const FormActions = {
     selectSchool(id) {
         Dispatcher.dispatch({
             type: FormActionTypes.SELECT_SCHOOL,
-            id,
+            school: id,
         });
-        WebApiUtils.submit("engineering", "computer science");
+        WebApiUtils.submit(id, "computer science");
+    },
+
+    selectSeason(season) {
+        Dispatcher.dispatch({
+            type: FormActionTypes.SELECT_SEASON,
+            season: season,
+        });
     },
 
     submitForm(id) {
@@ -16,7 +23,6 @@ const FormActions = {
             type: FormActionTypes.SUBMIT_FORM,
             id,
         });
-        WebApiUtils.submit("engineering", "computer science");
     },
 };
 

@@ -1,10 +1,13 @@
 module.exports = {
     schools: [
-        {title: "Engineering", img: "http://www.kiawahisland.org/Data/Sites/1/media/biweekly-email-/007-512.png"},
-        {title: "Arts", img: "http://squad.se/wp-content/uploads/2016/08/Hard-Money-Icon-3.png"},
-        {title: "Human Ecology", img: "http://www.morethanprinting.co/images/educationIcon.png"},
-        {title: "Hotel", img: "http://www.hotel-r.net/im/hotel/gb/icon-hotel-18.png"},
-        {title: "CALS", img: "http://www.cals.nl/wp-content/themes/calscollegelocatie/assets/img/logo.svg"},
+        {title: "Engineering", img: "../img/icons/engineering.png"},
+        {title: "Arts", img: "../img/icons/arts.png"},
+        {title: "Human Ecology", img: "../img/icons/human_ecology.png"},
+        {title: "Hotel", img: "../img/icons/hotel.png"},
+        {title: "CALS", img: "../img/icons/cals.png"},
+        {title: "Architecture", img: "../img/icons/architecture.png"},
+        {title: "Business", img: "../img/icons/business.png"},
+        {title: "ILR", img: "../img/icons/ilr.png"},
     ],
     majors: [
         "Computer Science",
@@ -48,5 +51,12 @@ module.exports = {
         UP: 38,
         DOWN: 40,
         ENTER: 13,
+        TAB: 9,
     },
+    semesterYears: [
+        16,
+        17,
+        18,
+        19,
+    ],
 }
