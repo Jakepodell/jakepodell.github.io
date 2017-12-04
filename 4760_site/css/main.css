@@ -1,0 +1,35 @@
+.heading {
+	background-color: #eee;
+	padding: 100px 50px 75px;
+	margin-bottom: 50px;
+}
+
+.heading h1 {
+	font-size: 4em;
+}
+
+h1 {
+	font-weight: 200;
+}
+
+.heading h2 {
+	font-weight: 100;
+}
+
+.section {
+	margin: 80px;
+}
+
+hr {
+	border-color: #eee;
+}
+
+img {
+	width: 50%;
+	margin: 25px auto;
+	display: block;
+}
+
+.navbar .btn {
+	margin-left: 5px;
+}
