@@ -17,7 +17,11 @@ h1 {
 }
 
 .section {
-	margin: 80px;
+	margin: 0 80px;
+}
+
+.section h1 {
+	padding-top: 75px;
 }
 
 hr {
@@ -32,4 +36,8 @@ img {
 
 .navbar .btn {
 	margin-left: 5px;
+}
+
+footer {
+	padding: 0 80px 10px;
 }
