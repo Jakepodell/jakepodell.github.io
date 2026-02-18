@@ -1,3 +1,108 @@
+// ─── PARTICLE CANVAS ──────────────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  const COUNT        = 85;
+  const LINK_DIST    = 140;
+  const MOUSE_DIST   = 180;
+  const BASE_SPEED   = 0.35;
+  const ACCENT       = '0, 212, 255';
+
+  let W, H;
+  const mouse = { x: -9999, y: -9999 };
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  class Particle {
+    constructor() {
+      this.x  = Math.random() * (W || 800);
+      this.y  = Math.random() * (H || 600);
+      this.vx = (Math.random() - 0.5) * BASE_SPEED;
+      this.vy = (Math.random() - 0.5) * BASE_SPEED;
+      this.r  = Math.random() * 1.2 + 0.8;
+    }
+    update() {
+      const dx   = mouse.x - this.x;
+      const dy   = mouse.y - this.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < MOUSE_DIST && dist > 0) {
+        const f = (MOUSE_DIST - dist) / MOUSE_DIST * 0.012;
+        this.vx += (dx / dist) * f;
+        this.vy += (dy / dist) * f;
+      }
+      // soft speed cap
+      const spd = Math.hypot(this.vx, this.vy);
+      if (spd > BASE_SPEED * 2.5) {
+        this.vx = (this.vx / spd) * BASE_SPEED * 2.5;
+        this.vy = (this.vy / spd) * BASE_SPEED * 2.5;
+      }
+      this.x += this.vx;
+      this.y += this.vy;
+      // wrap edges
+      if (this.x < -10) this.x = W + 10;
+      if (this.x > W + 10) this.x = -10;
+      if (this.y < -10) this.y = H + 10;
+      if (this.y > H + 10) this.y = -10;
+    }
+  }
+
+  const particles = [];
+  function init() {
+    resize();
+    particles.length = 0;
+    for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < COUNT; i++) {
+      particles[i].update();
+      const p = particles[i];
+
+      // connections to other particles
+      for (let j = i + 1; j < COUNT; j++) {
+        const q    = particles[j];
+        const dist = Math.hypot(p.x - q.x, p.y - q.y);
+        if (dist < LINK_DIST) {
+          ctx.strokeStyle = `rgba(${ACCENT}, ${(1 - dist / LINK_DIST) * 0.25})`;
+          ctx.lineWidth   = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+
+      // dot
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${ACCENT}, 0.55)`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // track mouse over the hero section (not canvas) so buttons stay clickable
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  }, { passive: true });
+  hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  window.addEventListener('resize', init, { passive: true });
+
+  init();
+  draw();
+})();
+
 // ─── SCROLL: shrink nav ───────────────────────────────────────────────────────
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
