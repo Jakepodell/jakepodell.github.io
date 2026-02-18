@@ -13,8 +13,8 @@
   const mouse = { x: -9999, y: -9999 };
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
   }
 
   class Particle {
