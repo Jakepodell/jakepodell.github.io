@@ -1,239 +1,262 @@
-<!-- Personal Website for Jake Podell
-Showcases skills and experience -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Jake Podell</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link href='https://fonts.googleapis.com/css?family=Germania+One|Passion+One|Alegreya+Sans:700|Open+Sans:300,400|Tangerine:700' rel='stylesheet' type='text/css'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jake Podell — Frontend Software Engineer at Citadel Securities. Cornell CS grad, Magna Cum Laude. Previously at Meta." />
+  <title>Jake Podell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-    <div id = "header">
+<nav>
+  <div class="nav-logo">JP</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-        <img class = "background" src="res/img/workspace_background_large_dark.jpg"/>
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Software Engineer · New York</div>
+    <h1 class="hero-name">Jake Podell</h1>
+    <p class="hero-title">Frontend Engineer @ <span>Citadel Securities</span></p>
+    <div class="btn-group">
+      <a href="res/Jake Podell.pdf" target="_blank" class="btn btn-primary">Resume</a>
+      <a href="https://github.com/jakepodell" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://linkedin.com/in/jakepodell" target="_blank" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
 
-        <div id = "mobile_nav_button" class = "mobile">
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">About</div>
+    <h2 class="section-title reveal">Who I am</h2>
+    <p class="about-text reveal">
+      I'm a <strong>software engineer</strong> based in New York, focused on building high-performance
+      frontend systems for financial markets. I graduated from <strong>Cornell University</strong>
+      (<em>Magna Cum Laude</em>, GPA 3.75) with a degree in Computer Science and minors in
+      Electrical Engineering and Cognitive Science.
+    </p>
+    <p class="about-text reveal" style="margin-top:16px;">
+      I've spent the last several years shipping production software at scale — first at
+      <strong>Meta</strong>, and now at <strong>Citadel Securities</strong>. Before that I interned
+      every summer through college, building everything from iOS apps and drone electronics to
+      promotional web apps for Michael Kors. I care about fast, reliable interfaces and the kind of
+      engineering craft that makes complex systems feel simple to use.
+    </p>
+  </div>
+</section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="section-title reveal">Where I've worked</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">Aug 2021 – Present</div>
+          <div class="timeline-company">Citadel Securities</div>
         </div>
-
-        <div id = "mobile_nav_bar" class = "hidden">
-            <a class = "mobile_button" href = "#about"> About </a>
-            <a class = "mobile_button" href = "#work"> Work </a>
-            <a class = "mobile_button" href = "http://www.github.com/jakepodell"> Code </a>
-            <a class = "mobile_button" href = "#contact"> Contact </a>
-            <a class = "mobile_button" target="_blank" href = "res/Jake Podell.pdf"> Resume </a>
+        <div class="timeline-right">
+          <div class="timeline-role">Frontend Software Engineer</div>
+          <ul class="timeline-bullets">
+            <li>Build and maintain real-time trading dashboards used by equity and options desks globally</li>
+            <li>Architect high-throughput data pipelines connecting C++ / Kdb+ back-ends to React UIs with sub-100ms latency</li>
+            <li>Lead frontend platform initiatives: design system, component library, and build tooling modernization</li>
+          </ul>
         </div>
+      </div>
 
-        <div id = "header_container">
-
-            <div class = "nav_bar desktop">
-                <a class = "button" href = "#about"> About </a>
-                <a class = "button" href = "#work"> Work </a>
-                <a class = "button" href = "#contact"> Contact </a>
-                <a class = "button" target="_blank" href = "res/Jake Podell.pdf"> Resume </a>
-                <hr>
-            </div>
-
-            <div id = "header_text" class = "header_text_low" >
-
-                <div id = "text">
-                    <p>Hello, my name is</p>
-                    <h1>JAKE PODELL</h1>
-                    <p>I build apps, websites, and electronics.
-                    </p>
-                </div>
-                <div id = "header_button_container">
-                <a class ="button" id = "header_button" href="#about">
-                    TAKE A LOOK
-                </a>
-                </div>
-
-            </div>
-
+      <div class="timeline-item reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">Jul 2019 – Aug 2021</div>
+          <div class="timeline-company">Meta</div>
         </div>
+        <div class="timeline-right">
+          <div class="timeline-role">Software Engineer</div>
+          <ul class="timeline-bullets">
+            <li>Reimagined Facebook's internal integration with the Ax open-source library for sequential field experiments, resulting in a <strong>52% year-over-year increase</strong> in product usage</li>
+            <li>Redesigned experiment result visualizations for consistency across UI, Python notebooks, and mobile surfaces</li>
+            <li>Shipped features across Facebook and Instagram reaching hundreds of millions of users</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EARLY CAREER -->
+      <div class="timeline-divider reveal">
+        <span>Early Career</span>
+      </div>
+
+      <div class="timeline-item timeline-item--intern reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">May – Aug 2018</div>
+          <div class="timeline-company">Facebook</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-role">Software Engineer Intern <span class="timeline-team">· Jobs Team</span></div>
+          <ul class="timeline-bullets">
+            <li>Built an application tracking system for businesses to organize and track job applicants</li>
+            <li>Developed a mobile view for users to see upcoming and completed interviews in the jobs browser</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-item--intern reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">May – Aug 2017</div>
+          <div class="timeline-company">Shopkeep</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-role">Software Engineer Intern</div>
+          <ul class="timeline-bullets">
+            <li>Built a JSON API in Ruby on Rails for verifying merchant applications with a third-party payment processor</li>
+            <li>Developed the React front end where users create and manage their merchant accounts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-item--intern reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">May – Aug 2016</div>
+          <div class="timeline-company">SALT</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-role">iOS Engineer Intern</div>
+          <ul class="timeline-bullets">
+            <li>Designed and built a "connect to friends" feature using the device address book — first major social graph feature for the angel-backed iOS startup</li>
+            <li>Eliminated the entire Objective-C codebase dependency by migrating files to Swift</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-item--intern reveal">
+        <div class="timeline-left">
+          <div class="timeline-date">May – Aug 2015</div>
+          <div class="timeline-company">Nickelfish</div>
+        </div>
+        <div class="timeline-right">
+          <div class="timeline-role">Software Engineer Intern</div>
+          <ul class="timeline-bullets">
+            <li>Led development of a promotional web app for Michael Kors' site — users upload photos and overlay them with Kors apparel</li>
+            <li>Redesigned Prudential's QMA website for mobile formats; built sites for Coldwell Banker and ADP</li>
+          </ul>
+        </div>
+      </div>
 
     </div>
+  </div>
+</section>
 
-    <div id = "about">
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="section-title reveal">Tech I work with</h2>
+    <div class="skills-grid reveal">
+      <span class="skill-pill">React</span>
+      <span class="skill-pill">TypeScript</span>
+      <span class="skill-pill">C++</span>
+      <span class="skill-pill">Python</span>
+      <span class="skill-pill">Kdb+ / q</span>
+      <span class="skill-pill">SQL</span>
+      <span class="skill-pill">HTML / CSS</span>
+      <span class="skill-pill">Node.js</span>
+      <span class="skill-pill">GraphQL</span>
+      <span class="skill-pill">Git</span>
+      <span class="skill-pill">Java</span>
+      <span class="skill-pill">Swift</span>
+    </div>
+  </div>
+</section>
 
-        <div id = "headshot">
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label reveal">Education</div>
+    <h2 class="section-title reveal">Cornell University</h2>
 
-            <img src = "res/img/headshot.png"/>
-
+    <div class="edu-card reveal">
+      <div class="edu-header">
+        <div>
+          <div class="edu-degree">B.S. Computer Science</div>
+          <div class="edu-minors">Minors in Electrical Engineering &amp; Cognitive Science</div>
         </div>
-
-        <div id = "about_text">
-
-            <img class = "header_hr" src = "res/img/empty_hr_dark_clean.png"/>
-
-            <h3>Nice to meet you</h3>
-
-            <p> Hello! This landing page was primarily while still at university. The work that I have been doing at Facebook
-                since graduation (and much of anything since 2017) is not reflected here, but is summarized on my resume and <a href="https://www.linkedin.com/in/jakepodell/" target="_blank">LinkedIn</a>!
-            </p>
-            <p>
-                I am a recent graduate from Cornell Engineering. At school
-                I was involved in Cornell's Unmanned Air Systems team, and received a bachelor's in Computer Science. If I am not at my desk,
-                you can find me at the gym or listening to classic rock.
-            </p>
-
-            <img class = "header_hr" src = "res/img/empty_hr_dark_clean.png"/>
-
+        <div class="edu-meta">
+          <div class="edu-honors">Magna Cum Laude</div>
+          <div class="edu-gpa">GPA 3.75</div>
         </div>
-
+      </div>
+      <div class="edu-coursework">
+        <span class="edu-course-label">Coursework</span>
+        Distributed Systems · Artificial Intelligence · Embedded Systems · Analysis of Algorithms ·
+        Theory of Computing · Functional Programming · Discrete Mathematics
+      </div>
+      <div class="edu-awards">
+        <div class="edu-award-item">Dean's Honor List — Spring 2016 through Fall 2018</div>
+      </div>
     </div>
 
-    <div id = "work">
-
-        <h1 id = "work_heading">Recent* Projects</h1>
-
-        <hr>
-
-        <div id = "work_container">
-
-            <div class = "work_item">
-
-                <img class = "work_image slide_from_right" src = "res/img/salt_work2.png"/>
-
-                <div class = work_description right>
-
-                    <h5> Swift | Objective C | Node.js </h5>
-                    <h1>iOS Development Intern: <br><a href = "http://www.trysalt.com" target = "_blank">SALT</a></h1>
-                    <h3>Summer 2016</h3>
-
-                    <p>
-                        Summer '16 was spent working on <a href = "http://www.trysalt.com" target="_blank"> SALT! </a> The nyc-based startup invited me to work as a front and back end developer on their new iOS app. Projects from the the 10 week internship include creating the "add friends" feature, which allows users to search for friends by username or from their contacts. 
-                    </p>
-
-                </div>
-
-                <hr class = "work_item_divider">
-
-            </div>
-
-
-            <div class = "work_item">
-
-                <img class = "work_image slide_from_left" src = "res/img/CUAir_work.png"/>
-
-                <div class = work_description right>
-
-                    <h5>Altium | C | Python | Unix | Arduino</h5>
-                    <h1>Electrical Team: <br> <a href = "http://cuair.engineering.cornell.edu/" target = "_blank">Cornell Unmanned Air Systems</a></h1>
-                    <h3>Current</h3>
-
-                    <p>
-                        On the CUAir Electrical Team, I aid the development of an autonomous plane to represent my school in the Unmanned Air
-                        Systems competition. My team's responsibilities include on-system computing, radio communications, and power distribution.
-                        My main responsibilities have been developing our air \drop system, implementing a simulated remote information center, and choosing our on-board computer.
-                    </p>
-
-                </div>
-
-                <hr class = "work_item_divider">
-
-            </div>
-
-            <div class = "work_item">
-
-                <img class = "work_image slide_from_right" src = "res/img/nickelfish_work2.png"/>
-
-                <div class = work_description left>
-
-                    <h5> HTML | CSS | Javascript | PHP | SQL | Laravel | Wordpress</h5>
-                    <h1>Web Development Intern: <br><a href = "http://www.nickelfish.com" target = "_blank">Nickelfish</a></h1>
-                    <h3>Summer 2015</h3>
-
-                    <p>
-                        My freshman year summer, some really kind folks over at <a href = "http://www.nickelfish.com" target="_blank">
-                        Nickelfish </a> invited me into their web development team. My portfolio from the internship includes sites for
-                        <a href = "https://www.coldwellbanker.com/" target="_blank">Coldwell Banker</a> and <a href = "http://www.qmassociates.com/" target="_blank">Prudential</a>.
-                        While I started with simple contributions and bug fixes, I was eventually given leading roles in my projects.
-                    </p>
-
-                </div>
-
-                <hr class = "work_item_divider">
-
-            </div>
-
-            <div class = "work_item">
-
-                <img class = "work_image slide_from_left" src = "res/img/bouncy_bot_work_white.png"/>
-
-                <div class = work_description right>
-
-                    <h5>Java | Android SDK | XML</h5>
-                    <h1>Android App Developer:<br> <a href = "https://github.com/Jakepodell/BouncyBot/tree/master/gen/com/example/bouncybot" target = "_blank">Bouncy Bot</a></h1>
-                    <h3>2014 - 2015</h3>
-
-                    <p>
-                        This simple and addictive game was my first published android app. After spending the majority of high school
-                        focused on Java, I was eager to practice some of the languages applications. Developing the app gave me a better
-                        understanding of my primary language, which was helpful when learning Java frameworks such as JavaFX.
-                        Working on the game also made me comfortable programming for mobile platforms.
-                    </p>
-
-                </div>
-
-                <hr class = "work_item_divider">
-
-            </div>
-
-            <div class = "work_item">
-
-                <img class = "work_image slide_from_right" src = "res/img/all_lax_work.png"/>
-
-                <div class = work_description left>
-
-                    <h5>Photoshop | Illustrator | InDesign | Dixon Ticonderoga</h5>
-                    <h1>Graphic Designer: <br><a href = "http://www.alllacrosse.com/all_lacrosse/The_Grand_Opening.html" target = "_blank">All Lacrosse</a></h1>
-                    <h3>Current</h3>
-
-                    <p>
-                        Since the end of my senior year I have worked from home/school as graphic designer. I mainly design and
-                        produce logos and artwork for professional, athletic, and college organizations. Having the opportunity
-                        to regularly flex a creative muscle helps me keep my engineering projects fresh and unique.
-                    </p>
-
-                </div>
-
-            </div>
-
+    <!-- CUAir highlight -->
+    <div class="cuair-card reveal">
+      <div class="cuair-header">
+        <div>
+          <div class="cuair-title">CUAir — Electrical Team Member</div>
+          <div class="cuair-sub">Cornell's competitive autonomous drone team · 2015–2018</div>
         </div>
-        
-    </div>
-    
-    <p>*Deprecated 2017</p>
-
-    <div id = "contact">
-
-        <div id = "reach_out">
-
-            <h1>Got a project and need some help?</h1>
-            <a class = "button" href="mailto:jhp246@cornell.edu?Subject=Reaching%20Out&Body=What's up?" target="_top">REACH OUT</a>
-
+        <div class="cuair-badges">
+          <span class="cuair-badge">2nd Overall 2018</span>
+          <span class="cuair-badge">2nd Overall 2017</span>
+          <span class="cuair-badge">2nd in Mission 2016</span>
         </div>
-
-        <div class = "nav_bar">
-            <a class = "button" href = "#about"> About Me </a>
-            <a class = "button" href = "#work"> Work </a>
-            <a class = "button" href = "http://www.github.com/jakepodell"> Code </a>
-            <a class = "button" href = "#contact"> Contact </a>
-            <a class = "button" target="_blank" href = "res/Resume.pdf"> Resume </a>
-        </div>
-
+      </div>
+      <p class="cuair-desc">
+        Competed in the national Student Unmanned Air Systems (SUAS) competition, placing second three years running.
+        Responsible for PCB design, RF communications, power systems, on-aircraft computing, and custom electronics
+        for the in-flight air drop system. Wrote a Bash script to autonomously connect the aircraft to wireless
+        networks and execute two-way file transfers mid-flight.
+      </p>
     </div>
 
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title" style="margin-bottom:16px;">Let's connect</h2>
+      <p style="color:var(--muted); max-width:520px;">
+        Whether you have a question, an opportunity, or just want to say hi — my inbox is open.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:podell6@gmail.com" class="contact-link">✉ podell6@gmail.com</a>
+        <a href="https://github.com/jakepodell" target="_blank" class="contact-link">⌥ github.com/jakepodell</a>
+        <a href="https://linkedin.com/in/jakepodell" target="_blank" class="contact-link">in linkedin.com/in/jakepodell</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Jake Podell · 2024</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/site.header.js"></script>
-<script src="js/site.work.js"></script>
-<script src="js/site.mobile.js"></script>
-<script src="js/smooth_scroll.js"></script>
-
 </html>
